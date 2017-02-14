@@ -97,10 +97,10 @@ static void knob_expose(GtkWidget *widget, int knob_x, int knob_y, GdkEventExpos
     } else {
         grow =  allocation->width;
     }
-    if (priv->model == 1) {
+    if (priv->model == 1 || priv->model == 6) {
         knob_x = grow-24;
         knob_y = grow-24; 
-    } else  if (priv->model == 4 || priv->model == 5 || priv->model == 6) {
+    } else  if (priv->model == 4 || priv->model == 5) {
         knob_x = grow-30;
         knob_y = grow-30; 
     } else {
@@ -209,15 +209,15 @@ static void knob_expose(GtkWidget *widget, int knob_x, int knob_y, GdkEventExpos
         
         if (priv->model == 1) {
             cairo_text_extents(cr,"Off", &extents);
-            cairo_move_to (cr, knobx1-knob_x/2.4-extents.width/1.4, knoby1+knob_y/2+extents.height/1.4);
+            cairo_move_to (cr, knobx1-knob_x/2.4-extents.width/1.4, knoby1+knob_y/2+extents.height);
             cairo_show_text(cr, "Off");
 
             cairo_text_extents(cr,"On", &extents);
-            cairo_move_to (cr, knobx1+knob_x/2.6-extents.width/2.3, knoby1+knob_y/2+extents.height/1.4);
+            cairo_move_to (cr, knobx1+knob_x/2.6-extents.width/2.3, knoby1+knob_y/2+extents.height);
             cairo_show_text(cr, "On");
         } else if (priv->model == 4) {
             cairo_text_extents(cr,"Low", &extents);
-            cairo_move_to (cr, knobx1-knob_x/2.4-extents.width/1.4, knoby1+knob_y/1.6+extents.height/1.6);
+            cairo_move_to (cr, knobx1-knob_x/2.4-extents.width/1.4, knoby1+knob_y/2+extents.height/0.7);
             cairo_show_text(cr, "Low");
 
             cairo_text_extents(cr,"Mid", &extents);
@@ -225,11 +225,11 @@ static void knob_expose(GtkWidget *widget, int knob_x, int knob_y, GdkEventExpos
             cairo_show_text(cr, "Mid");
 
             cairo_text_extents(cr,"Orig", &extents);
-            cairo_move_to (cr, knobx1+knob_x/2.6-extents.width/2.3, knoby1+knob_y/1.8+extents.height/1.6);
+            cairo_move_to (cr, knobx1+knob_x/2.6-extents.width/2.3, knoby1+knob_y/2+extents.height);
             cairo_show_text(cr, "Orig");
         } else if (priv->model == 5) {
             cairo_text_extents(cr,"Off", &extents);
-            cairo_move_to (cr, knobx1-knob_x/2.4-extents.width/1.4, knoby1+knob_y/1.6+extents.height/1.6);
+            cairo_move_to (cr, knobx1-knob_x/2.4-extents.width/1.4, knoby1+knob_y/2+extents.height/0.8);
             cairo_show_text(cr, "Off");
 
             cairo_text_extents(cr,"Low", &extents);
@@ -237,15 +237,15 @@ static void knob_expose(GtkWidget *widget, int knob_x, int knob_y, GdkEventExpos
             cairo_show_text(cr, "Low");
 
             cairo_text_extents(cr,"High", &extents);
-            cairo_move_to (cr, knobx1+knob_x/2.6-extents.width/3.0, knoby1+knob_y/1.8+extents.height/1.6);
+            cairo_move_to (cr, knobx1+knob_x/2.6-extents.width/3.0, knoby1+knob_y/2+extents.height);
             cairo_show_text(cr, "High");
         } else if (priv->model == 6) {
             cairo_text_extents(cr,"Low", &extents);
-            cairo_move_to (cr, knobx1-knob_x/2.4-extents.width/1.4, knoby1+knob_y/1.6+extents.height/1.6);
+            cairo_move_to (cr, knobx1-knob_x/2.6-extents.width/1.4, knoby1+knob_y/2+extents.height);
             cairo_show_text(cr, "Low");
 
             cairo_text_extents(cr,"High", &extents);
-            cairo_move_to (cr, knobx1+knob_x/2.6-extents.width/2.3, knoby1+knob_y/1.8+extents.height/1.6);
+            cairo_move_to (cr, knobx1+knob_x/2.6-extents.width/2.3, knoby1+knob_y/2+extents.height/1.3);
             cairo_show_text(cr, "High");
         }
         cairo_pattern_destroy (pat);
@@ -329,6 +329,8 @@ static void gtk_knob_size_request (GtkWidget *widget, GtkRequisition *requisitio
 static void gtk_knob_set_value (GtkWidget *widget, int dir_down)
 {
     g_assert(GTK_IS_QUACK_KNOB(widget));
+    GtkQuackKnob *knob = GTK_QUACK_KNOB(widget);
+    GtkQuackKnobPrivate *priv = GTK_QUACK_KNOB_GET_PRIVATE(knob);
 
     GtkAdjustment *adj = gtk_range_get_adjustment(GTK_RANGE(widget));
 
@@ -340,6 +342,7 @@ static void gtk_knob_set_value (GtkWidget *widget, int dir_down)
     else
         step = oldstep + 1;
     float value = gtk_adjustment_get_lower(adj) + step * (double)(gtk_adjustment_get_upper(adj) - gtk_adjustment_get_lower(adj)) / nsteps;
+    if (priv->model == 5 || priv->model == 4) if (value > gtk_adjustment_get_upper(adj)) value = 0;
     gtk_widget_grab_focus(widget);
     gtk_range_set_value(GTK_RANGE(widget), value);
 }
@@ -468,8 +471,8 @@ static gboolean gtk_knob_button_press (GtkWidget *widget, GdkEventButton *event)
         priv->button_is = 1;
 	    if (priv->model == 1 || priv->model == 4  || priv->model == 5 || priv->model == 6) {
  	        GtkAdjustment *adj = gtk_range_get_adjustment(GTK_RANGE(widget));
-            float value = gtk_range_get_value(GTK_RANGE(widget));
-            if(value<gtk_adjustment_get_upper(adj)) gtk_range_set_value(GTK_RANGE(widget),value+1);
+            float value = gtk_range_get_value(GTK_RANGE(widget))+1;
+            if(value<=gtk_adjustment_get_upper(adj)) gtk_range_set_value(GTK_RANGE(widget),value);
             else gtk_range_set_value(GTK_RANGE(widget),0);
         }
         knob_pointer_event(widget, event->x, event->y, priv->knob_x, priv->knob_y,
