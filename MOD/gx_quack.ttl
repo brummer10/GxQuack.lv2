@@ -41,7 +41,7 @@
 
 <http://guitarix.sourceforge.net/plugins/gx_quack_#_quack_>
     a lv2:Plugin ,
-        lv2:EnvelopePlugin ;
+        lv2:FilterPlugin ;
     doap:maintainer <http://guitarix.sourceforge.net#me> ;
     doap:name "GxQuack";
     doap:license <http://opensource.org/licenses/isc> ;
@@ -55,9 +55,7 @@
     mod:label "GxQuack" ;
     
 rdfs:comment """
-
-...
-
+Envelope controlled wah pedal with some extra features
 """;
 
     lv2:port  [
