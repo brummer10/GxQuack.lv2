@@ -1,0 +1,239 @@
+/* STYLES FOR THE BOXY PEDAL */
+
+@import url(/fonts/nexa/stylesheet.css);
+@import url(/fonts/questrial/stylesheet.css);
+
+
+/* = CONTAINER
+================================================ */
+.mod-pedal-boxy{{{cns}}} {
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:230px 431px;
+    height:431px;
+    position:absolute;
+    width:230px;
+    border-radius: 21px;
+}
+
+.mod-pedal-boxy{{{cns}}}.mod-boxy100 {
+    background-size:371px 431px;
+    width:371px;
+}
+
+/* PORTS
+================================================ */
+
+.mod-pedal-boxy{{{cns}}}.mod-boxy100 .mod-pedal-input,
+.mod-pedal-boxy{{{cns}}}.mod-boxy100 .mod-pedal-output {
+    top: 66px;
+}
+
+/* = PLUGIN'S AUTHOR
+================================================ */
+.mod-pedal-boxy{{{cns}}} .mod-plugin-brand {
+    left:0;
+    position:absolute;
+    right:0;
+    text-align:center;
+    text-transform:uppercase;
+    top:260px;
+}
+
+.mod-pedal-boxy{{{cns}}} .mod-plugin-brand h1 {
+    border-color:#000;
+    border-radius:12px;
+    border-style:solid;
+    border-width:4px;
+    display:inline-block;
+    font-family:"Nexa";
+    font-size:32px;
+    padding:3px 9px 0;
+}
+
+/* = PLUGIN'S NAME
+================================================ */
+.mod-pedal-boxy{{{cns}}} .mod-plugin-name {
+    left:30px;
+    overflow:hidden;
+    position:absolute;
+    right:30px;
+    text-align:center;
+    top:370px;
+}
+
+.mod-pedal-boxy{{{cns}}} .mod-plugin-name h1 {
+    font-family:"Questrial";
+    font-size:21px;
+    line-height:1;
+}
+
+/* SWITCH ON/OFF GENERAL */
+.mod-pedal-boxy{{{cns}}} .mod-switch {
+    cursor: pointer;
+    float: left;
+    height: 71px;
+    position: relative;
+    width: 71px;
+}
+
+.mod-pedal-boxy{{{cns}}} .mod-switch-image {
+    background-image: url(/resources/switches/switch.png{{{ns}}});
+    background-position: -9px 0px;
+    background-repeat: no-repeat;
+    background-size: auto 71px;
+    height: 71px;
+    width: 71px;
+}
+
+.mod-pedal-boxy{{{cns}}} .mod-switch-image.on {
+    background-position: -80px 0px;
+}
+
+.mod-pedal-boxy{{{cns}}} .mod-switch-image.off {
+    background-position: -9px 0px;
+}
+
+/* = KNOBS
+================================================ */
+.mod-pedal-boxy{{{cns}}} .mod-control-group {
+    background-image: url(/resources/pedals/frame.png{{{ns}}});
+    background-repeat:no-repeat;
+    background-size:auto 80px;
+    margin:40px !important;
+    position:relative;
+    text-align:center;
+    z-index:30;
+}
+
+.mod-pedal-boxy{{{cns}}} .top {
+    margin-top:0px !important;
+}
+
+.mod-pedal-boxy{{{cns}}} .mod-control-group .mod-knob-drive,
+.mod-pedal-boxy{{{cns}}} .mod-control-group .mod-knob-mode,
+.mod-pedal-boxy{{{cns}}} .mod-control-group .mod-knob-tone,
+.mod-pedal-boxy{{{cns}}} .mod-control-group .mod-knob-range,
+.mod-pedal-boxy{{{cns}}} .mod-control-group .mod-knob {
+    overflow:hidden;
+    position:relative;
+}
+
+.mod-pedal-boxy{{{cns}}} .mod-control-group .mod-knob-drive > span.mod-knob-title,
+.mod-pedal-boxy{{{cns}}} .mod-control-group .mod-knob-mode > span.mod-knob-title,
+.mod-pedal-boxy{{{cns}}} .mod-control-group .mod-knob-tone > span.mod-knob-title,
+.mod-pedal-boxy{{{cns}}} .mod-control-group .mod-knob-range > span.mod-knob-title,
+.mod-pedal-boxy{{{cns}}} .mod-control-group .mod-knob > span.mod-knob-title {
+    bottom:0px;
+    display:block;
+    font-size:11px;
+    font-weight:bold;
+    height:12px;
+    left:0;
+    line-height:1;
+    margin:0;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    right:0;
+    text-transform:uppercase;
+}
+
+/* THREE AND HIGHER KNOBS */
+.mod-pedal-boxy{{{cns}}}.mod-four-knobs .mod-control-group .mod-knob .mod-knob-image {
+    background-image:url(/resources/knobs/boxy/cairo.png{{{ns}}});
+    background-repeat:no-repeat;
+    background-size:auto 60px;
+    height:60px;
+    width:60px;
+    margin:0 auto;
+    margin-top:5px !important;
+}
+.mod-pedal-boxy{{{cns}}}.mod-four-knobs .mod-control-group .mod-knob-drive .mod-knob-image {
+    background-image:url(/resources/knobs/boxy/drive.png{{{ns}}});
+    background-repeat:no-repeat;
+    background-size:auto 60px;
+    height:60px;
+    width:60px;
+    margin:0 auto;
+    margin-top:5px !important;
+}
+.mod-pedal-boxy{{{cns}}}.mod-four-knobs .mod-control-group .mod-knob-mode .mod-knob-image {
+    background-image:url(/resources/knobs/boxy/mode.png{{{ns}}});
+    background-repeat:no-repeat;
+    background-size:auto 60px;
+    height:60px;
+    width:60px;
+    margin:0 auto;
+    margin-top:5px !important;
+}
+.mod-pedal-boxy{{{cns}}}.mod-four-knobs .mod-control-group .mod-knob-range .mod-knob-image {
+    background-image:url(/resources/knobs/boxy/range.png{{{ns}}});
+    background-repeat:no-repeat;
+    background-size:auto 60px;
+    height:60px;
+    width:60px;
+    margin:0 auto;
+    margin-top:5px !important;
+}
+.mod-pedal-boxy{{{cns}}}.mod-four-knobs .mod-control-group .mod-knob-tone .mod-knob-image {
+    background-image:url(/resources/knobs/boxy/tone.png{{{ns}}});
+    background-repeat:no-repeat;
+    background-size:auto 60px;
+    height:60px;
+    width:60px;
+    margin:0 auto;
+    margin-top:5px !important;
+}
+.mod-pedal-boxy{{{cns}}}.mod-four-knobs .mod-control-group .mod-knob,
+.mod-pedal-boxy{{{cns}}}.mod-four-knobs .mod-control-group .mod-knob-drive,
+.mod-pedal-boxy{{{cns}}}.mod-four-knobs .mod-control-group .mod-knob-tone,
+.mod-pedal-boxy{{{cns}}}.mod-four-knobs .mod-control-group .mod-knob-range,
+.mod-pedal-boxy{{{cns}}}.mod-four-knobs .mod-control-group .mod-knob-mode {
+    display:inline-block;
+    height:78px;
+}
+
+/* = BACKGROUND IMAGES - Color of the pedal
+================================================ */
+.mod-pedal-boxy{{{cns}}}.mod-boxy100.mod-quack {
+    background-image:url(/resources/pedals/boxy100/quack.png{{{ns}}});
+}
+
+
+/* = COLORS - Color of the pedals labels
+================================================ */
+.mod-pedal-boxy{{{cns}}}.mod-quack h1,
+.mod-pedal-boxy{{{cns}}}.mod-quack .mod-enumerated,
+.mod-pedal-boxy{{{cns}}}.mod-quack .mod-control-group .mod-knob-drive > span.mod-knob-title,
+.mod-pedal-boxy{{{cns}}}.mod-quack .mod-control-group .mod-knob-mode > span.mod-knob-title,
+.mod-pedal-boxy{{{cns}}}.mod-quack .mod-control-group .mod-knob-range > span.mod-knob-title,
+.mod-pedal-boxy{{{cns}}}.mod-quack .mod-control-group .mod-knob-tone > span.mod-knob-title,
+.mod-pedal-boxy{{{cns}}}.mod-quack .mod-control-group .mod-knob > span.mod-knob-title
+{
+    color:white;
+}
+.mod-pedal-boxy{{{cns}}}.mod-quack h1
+{
+    border-color:white;
+}
+/* STYLES FOR THE BOXY KNOB */
+
+
+/* = KNOBS
+================================================ */
+.mod-pedal-boxy{{{cns}}} .mod-control-group.mod-cairo .mod-knob .mod-knob-image {
+    background-image:url(/resources/knobs/boxy/cairo.png{{{ns}}});
+}
+.mod-pedal-boxy{{{cns}}} .mod-control-group.mod-cairo .mod-knob-drive .mod-knob-image {
+    background-image:url(/resources/knobs/boxy/drive.png{{{ns}}});
+}
+.mod-pedal-boxy{{{cns}}} .mod-control-group.mod-cairo .mod-knob-tone .mod-knob-image {
+    background-image:url(/resources/knobs/boxy/tone.png{{{ns}}});
+}
+.mod-pedal-boxy{{{cns}}} .mod-control-group.mod-cairo .mod-knob-range .mod-knob-image {
+    background-image:url(/resources/knobs/boxy/range.png{{{ns}}});
+}
+.mod-pedal-boxy{{{cns}}} .mod-control-group.mod-cairo .mod-knob-mode .mod-knob-image {
+    background-image:url(/resources/knobs/boxy/mode.png{{{ns}}});
+}
