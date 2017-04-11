@@ -137,7 +137,7 @@ Envelope controlled wah pedal with some extra features
         lv2:name "PEAK" ;
         lv2:default 5.0 ;
         lv2:minimum -6.0 ;
-        lv2:maximum 2e+01 ;
+        lv2:maximum 20.0 ;
     ]      , [
         a lv2:InputPort ,
             lv2:ControlPort ;
