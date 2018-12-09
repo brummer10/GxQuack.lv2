@@ -123,7 +123,7 @@ Gx_quack_::Gx_quack_() :
   input(NULL),
   quack(quack::plugin()),
   bypass(0),
-  bypass_(0),
+  bypass_(2),
   needs_ramp_down(false),
   needs_ramp_up(false),
   bypassed(false) {};
